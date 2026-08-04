@@ -1,0 +1,216 @@
+format = """
+$os\
+$hostname\
+$nix_shell\
+$directory\
+$git_branch\
+$git_status\
+$docker_context\
+$character\
+"""
+
+right_format = """
+$c\
+${custom.cpp}\
+${custom.cs}\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$ocaml\
+$python\
+$rust\
+$scala\
+$jobs\
+"""
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+[username]
+show_always = true
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[$user ]($style)'
+disabled = false
+
+[hostname]
+style = "fg:blue"
+ssh_only = false
+ssh_symbol = " 󰢹 "
+format = '[$hostname]($style)[$ssh_symbol](blue)'
+
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+style = "fg:blue"
+format = ' [$symbol]($style)(bold)'
+disabled = false # Disabled by default
+
+[os.symbols]
+Arch = " "
+Fedora = " "
+Bazzite = " "
+
+[directory]
+style = "bold"
+read_only = ' '
+format = "[ $path ]($style)[$read_only](yellow)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"~/Documents" = "~/ "
+"~/Downloads" = "~/ "
+"~/Music" = "~/ "
+"~/Pictures" = "~/ "
+# "~" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = " 󰈙 "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important 󰈙 " = " 󰈙 "
+
+[character]
+success_symbol = '[](fg:green bold)'
+error_symbol = '[](fg:red bold)'
+# success_symbol = '[ ](fg:green bold)'
+# error_symbol = '[ ](fg:red bold)'
+
+[c]
+symbol = " "
+style = 'fg:blue'
+format = '[$symbol]($style)'
+
+[custom.cpp]
+symbol = ' '
+style = 'fg:blue'
+detect_extensions = ['cc', 'cpp', 'cxx']
+format = '[$symbol]($style)'
+
+[custom.cs]
+symbol = '󰌛 '
+style = 'fg:#C6A0F6'
+detect_extensions = ['cs']
+format = '[$symbol]($style)'
+
+[dart]
+symbol = " "
+style = 'fg:blue'
+format = '[$symbol]($style)'
+
+[docker_context]
+symbol = ""
+style = "fg:blue"
+format = '[$symbol $context ]($style)$path'
+
+[dotnet]
+symbol = "󰪮 "
+style = 'fg:#C6A0F6'
+format = '[$symbol]($style)'
+
+[elixir]
+symbol = " "
+style = 'fg:purple'
+format = '[$symbol]($style)'
+
+[elm]
+symbol = " "
+style = 'fg:blue'
+format = '[$symbol]($style)'
+
+[git_branch]
+symbol = ""
+style = 'fg:red'
+format = '[$branch]($style)'
+
+[git_status]
+style = "fg:yellow"
+format = '[$all_status$ahead_behind ]($style)'
+
+[git_metrics]
+disabled = true
+format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+
+[golang]
+symbol = " "
+style = 'fg:blue'
+format = '[$symbol]($style)'
+
+[gradle]
+symbol = " "
+style = 'fg:bright-white'
+format = '[$symbol]($style)'
+
+[haskell]
+symbol = " "
+style = 'fg:purple'
+format = '[$symbol]($style)'
+
+[java]
+symbol = " "
+style = 'fg:red'
+format = '[$symbol]($style)'
+
+[jobs]
+symbol = " "
+style = 'fg:red'
+symbol_threshold = 1
+number_threshold = 2
+
+[julia]
+symbol = " "
+style = 'fg:red'
+format = '[$symbol]($style)'
+
+[nodejs]
+symbol = " "
+style = 'fg:green'
+format = '[$symbol]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = 'fg:yellow'
+format = '[$symbol]($style)'
+
+[ocaml]
+symbol = " "
+style = 'fg:#FAB387'
+format = '[$symbol]($style)'
+
+[python]
+symbol = " "
+style = 'fg:blue'
+format = '[$symbol]($style)'
+
+[rust]
+symbol = " "
+style = 'fg:yellow'
+format = '[$symbol]($style)'
+
+[scala]
+symbol = " "
+style = 'fg:red'
+format = '[$symbol]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "fg:#B4BEFE"
+format = '[ $time ]($style)'
+
+[nix_shell]
+pure_msg = '[ 󱄅](bold green)'
+impure_msg = '[ 󱄅](bold red)'
+format = '$state'
